@@ -1,0 +1,161 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.38.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Maria Grigore, Technicaly Military Academy, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.38.0.0
+Toolchain Path:  E:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.19
+Assembler:       Armasm.exe V6.19
+Linker/Locator:  ArmLink.exe V6.19
+Library Manager: ArmAr.exe V6.19
+Hex Converter:   FromElf.exe V6.19
+CPU DLL:         SARMCM3.DLL V5.38.0.0
+Dialog DLL:      DARMCM1.DLL V1.19.6.0
+Target DLL:      CMSIS_AGDI.dll V1.33.15.0
+Dialog DLL:      TARMCM1.DLL V1.14.6.0
+ 
+<h2>Project:</h2>
+E:\ATM ANUL IV\MICROPROCESOARE\PROIECT2\proiect.uvprojx
+Project File Date:  12/29/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.19', folder: 'E:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+main.c(4): warning: In file included from...
+./Gpio.h(3): warning: no newline at end of file [-Wnewline-eof]
+void RGBLed_Init(void);
+                       ^
+1 warning generated.
+compiling main.c...
+Gpio.c(1): warning: In file included from...
+./Gpio.h(3): warning: no newline at end of file [-Wnewline-eof]
+void RGBLed_Init(void);
+                       ^
+1 warning generated.
+compiling Gpio.c...
+compiling system_MKL25Z4.c...
+Uart.c(14): warning: while loop has empty body [-Wempty-body]
+        while(!(UART0->S1 & UART0_S1_TDRE_MASK));
+                                                ^
+Uart.c(14): note: put the semicolon on a separate line to silence this warning
+Uart.c(21): warning: while loop has empty body [-Wempty-body]
+        while(!(UART0->S1 & UART0_S1_RDRF_MASK));
+                                                ^
+Uart.c(21): note: put the semicolon on a separate line to silence this warning
+Uart.c(59): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+        uint16_t sbr = (uint16_t)((DEFAULT_SYSTEM_CLOCK)/(baud_rate * (osr+1)));
+                 ^
+Uart.c(3): warning: no previous extern declaration for non-static variable 'c' [-Wmissing-variable-declarations]
+char c; 
+     ^
+Uart.c(3): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+char c; 
+^
+Uart.c(4): warning: no previous extern declaration for non-static variable 'buffer' [-Wmissing-variable-declarations]
+char buffer[32];
+     ^
+Uart.c(4): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+char buffer[32];
+^
+Uart.c(6): warning: no previous extern declaration for non-static variable 'write' [-Wmissing-variable-declarations]
+int write, read;
+    ^
+Uart.c(6): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int write, read;
+^
+Uart.c(6): warning: no previous extern declaration for non-static variable 'read' [-Wmissing-variable-declarations]
+int write, read;
+           ^
+Uart.c(6): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int write, read;
+^
+Uart.c(7): warning: no previous extern declaration for non-static variable 'print_buffer' [-Wmissing-variable-declarations]
+int print_buffer;
+    ^
+Uart.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int print_buffer;
+^
+Uart.c(8): warning: no previous extern declaration for non-static variable 'full' [-Wmissing-variable-declarations]
+int full;
+    ^
+Uart.c(8): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int full;
+^
+9 warnings generated.
+compiling Uart.c...
+Pit.c(8): warning: no previous extern declaration for non-static variable 'led_state' [-Wmissing-variable-declarations]
+uint8_t led_state;
+        ^
+Pit.c(8): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t led_state;
+^
+Pit.c(9): warning: no previous extern declaration for non-static variable 'change_sequence' [-Wmissing-variable-declarations]
+uint8_t change_sequence;
+        ^
+Pit.c(9): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t change_sequence;
+^
+Pit.c(10): warning: no previous extern declaration for non-static variable 'individual_color' [-Wmissing-variable-declarations]
+uint8_t individual_color;
+        ^
+Pit.c(10): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t individual_color;
+^
+Pit.c(11): warning: no previous extern declaration for non-static variable 'duration_flag' [-Wmissing-variable-declarations]
+uint8_t duration_flag;
+        ^
+Pit.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t duration_flag;
+^
+Pit.c(12): warning: no previous extern declaration for non-static variable 'stop_led' [-Wmissing-variable-declarations]
+uint8_t stop_led;
+        ^
+Pit.c(12): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t stop_led;
+^
+5 warnings generated.
+compiling Pit.c...
+assembling startup_MKL25Z4.s...
+compiling ADC.c...
+linking...
+Program Size: Code=5812 RO-data=272 RW-data=0 ZI-data=416  
+".\Objects\proiect.axf" - 0 Error(s), 16 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.Kinetis_KLxx_DFP.1.15.1.pack
+                Keil.Kinetis_KLxx_DFP.1.15.1
+                NXP Kinetis KLxx Series Device Support and Examples
+   * Component: Startup Version: 2.5.0
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/Device/MKL25Z128xxx4
+  ./RTE/_Target_1
+  C:/Users/tonyg/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/tonyg/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: Keil::Device:Startup:2.5.0
+      Include file:  Device/Source/system_MKL25Z4.h
+      Source file:   Device/Source/ARM/startup_MKL25Z4.s
+      Source file:   Device/Source/system_MKL25Z4.c
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
