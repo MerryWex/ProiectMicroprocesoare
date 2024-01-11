@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QMainWindow, QHBoxLayout, QVBoxLayout, QWidget, QGroupBox, QLabel, QPushButton, QLineEdit, QTextEdit
+from PySide6.QtWidgets import QMainWindow, QHBoxLayout, QVBoxLayout, QWidget, QGroupBox, QLabel, QPushButton, QTextEdit
 from PySide6.QtGui import QIcon, QFont
 from PySide6.QtCore import Qt, QTimer
 import pyqtgraph as pg
@@ -8,7 +8,7 @@ import re
 from datetime import datetime
 
 SERIAL_COM = "COM3"
-BAUD_RATE = 115200
+BAUD_RATE = 19200
 
 
 class MainWindow(QMainWindow):
@@ -25,7 +25,7 @@ class MainWindow(QMainWindow):
 
         self.serial_communication()
         self.setup_UI()
-       
+
 
 
     def setup_UI(self):
