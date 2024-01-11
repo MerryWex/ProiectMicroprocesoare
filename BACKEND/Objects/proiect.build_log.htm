@@ -21,25 +21,31 @@ Target DLL:      CMSIS_AGDI.dll V1.33.15.0
 Dialog DLL:      TARMCM1.DLL V1.14.6.0
  
 <h2>Project:</h2>
-E:\ATM ANUL IV\MICROPROCESOARE\PROIECT2\proiect.uvprojx
-Project File Date:  12/29/2023
+E:\ATM ANUL IV\MICROPROCESOARE\PROIECT2\GITHUB\ProiectMicroprocesoare\BACKEND\proiect.uvprojx
+Project File Date:  01/11/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'E:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
-main.c(4): warning: In file included from...
-./Gpio.h(3): warning: no newline at end of file [-Wnewline-eof]
-void RGBLed_Init(void);
-                       ^
-1 warning generated.
-compiling main.c...
 Gpio.c(1): warning: In file included from...
 ./Gpio.h(3): warning: no newline at end of file [-Wnewline-eof]
 void RGBLed_Init(void);
                        ^
 1 warning generated.
 compiling Gpio.c...
-compiling system_MKL25Z4.c...
+main.c(4): warning: In file included from...
+./Gpio.h(3): warning: no newline at end of file [-Wnewline-eof]
+void RGBLed_Init(void);
+                       ^
+main.c(15): warning: no previous prototype for function 'interpret_flags' [-Wmissing-prototypes]
+void interpret_flags(uint8_t* _receivedChar, uint8_t* _change_sequence, uint8_t* _individual_color, uint8_t* _duration_flag, uint8_t* _stop_led)
+     ^
+main.c(15): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void interpret_flags(uint8_t* _receivedChar, uint8_t* _change_sequence, uint8_t* _individual_color, uint8_t* _duration_flag, uint8_t* _stop_led)
+^
+static 
+2 warnings generated.
+compiling main.c...
 Uart.c(14): warning: while loop has empty body [-Wempty-body]
         while(!(UART0->S1 & UART0_S1_TDRE_MASK));
                                                 ^
@@ -48,6 +54,9 @@ Uart.c(21): warning: while loop has empty body [-Wempty-body]
         while(!(UART0->S1 & UART0_S1_RDRF_MASK));
                                                 ^
 Uart.c(21): note: put the semicolon on a separate line to silence this warning
+Uart.c(60): warning: // comments are not allowed in this language [-Wcomment]
+        //sbr/=4;
+        ^
 Uart.c(59): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
         uint16_t sbr = (uint16_t)((DEFAULT_SYSTEM_CLOCK)/(baud_rate * (osr+1)));
                  ^
@@ -87,8 +96,11 @@ int full;
 Uart.c(8): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 int full;
 ^
-9 warnings generated.
+10 warnings generated.
 compiling Uart.c...
+compiling ADC.c...
+compiling system_MKL25Z4.c...
+assembling startup_MKL25Z4.s...
 Pit.c(8): warning: no previous extern declaration for non-static variable 'led_state' [-Wmissing-variable-declarations]
 uint8_t led_state;
         ^
@@ -121,11 +133,9 @@ uint8_t stop_led;
 ^
 5 warnings generated.
 compiling Pit.c...
-assembling startup_MKL25Z4.s...
-compiling ADC.c...
 linking...
 Program Size: Code=5812 RO-data=272 RW-data=0 ZI-data=416  
-".\Objects\proiect.axf" - 0 Error(s), 16 Warning(s).
+".\Objects\proiect.axf" - 0 Error(s), 18 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -155,7 +165,7 @@ Package Vendor: Keil
       Include file:  Device/Source/system_MKL25Z4.h
       Source file:   Device/Source/ARM/startup_MKL25Z4.s
       Source file:   Device/Source/system_MKL25Z4.c
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

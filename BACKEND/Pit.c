@@ -39,6 +39,10 @@ void PIT_Init(void) {
 
 void PIT_IRQHandler(void) {
 	
+	/*461ms*/
+	if(duration_flag == '4')
+		PIT->CHANNEL[0].LDVAL = 0xAB917D ;
+	
 	/*10 ms*/
 	if(duration_flag == '1')
 		PIT->CHANNEL[0].LDVAL = 0x25376F;
@@ -47,17 +51,10 @@ void PIT_IRQHandler(void) {
 	if(duration_flag == '2')
 		PIT->CHANNEL[0].LDVAL = 0x1742A62 ;
 	
-	/*3 s*/
+	/*2 s*/
 	if(duration_flag == '3')
 		PIT->CHANNEL[0].LDVAL = 0x2E854C9 ;
 	
-	/*461ms*/
-	if(duration_flag == '4')
-		PIT->CHANNEL[0].LDVAL = 0xAB917D ;
-	
-	/*if(change_sequence == '0')
-		stop_led = 'q';
-	*/
 	if(PIT->CHANNEL[0].TFLG & PIT_TFLG_TIF_MASK) 
 	{
 	PIT->CHANNEL[0].TFLG &= PIT_TFLG_TIF_MASK;

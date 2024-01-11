@@ -3,6 +3,7 @@
 #include "Pit.h"
 #include "Gpio.h"
 #include "ADC.h"
+#include "main.h"
 
 extern uint32_t timer_value;
 extern uint8_t led_state;
@@ -11,66 +12,71 @@ extern uint8_t individual_color;
 extern uint8_t duration_flag;
 extern uint8_t stop_led;
 
+void interpret_flags(uint8_t* _receivedChar, uint8_t* _change_sequence, uint8_t* _individual_color, uint8_t* _duration_flag, uint8_t* _stop_led)
+{
+	if (is_UART_DataAvailable()) {
+		(*_receivedChar) = UART_Receive();
+	}
+	if((*_receivedChar) == 'M')
+	{
+		(*_change_sequence) = '1';
+		(*_individual_color) = 'X';
+	}
+	else
+	{
+		(*_change_sequence) = '0';
+		(*_individual_color) = 'X';
+	}
+	
+	if((*_receivedChar == 'N') && (*_change_sequence) == 1)
+	{
+		(*_change_sequence) = '0';
+		(*_individual_color) = 'X';
+		(*_stop_led) = 'q';
+	}
+
+	if((*_receivedChar) == 'W')
+		(*_individual_color) = 'W';
+	if((*_receivedChar) == 'G')
+		(*_individual_color) = 'G';
+	if((*_receivedChar) == 'T')
+		(*_individual_color) = 'T';
+	if((*_receivedChar) == 'Y')
+		(*_individual_color) = 'Y';
+		
+	if((*_receivedChar) == '1')
+		(*_duration_flag) = '1';
+  if((*_receivedChar) == '2')
+		(*_duration_flag) = '2';
+	if((*_receivedChar) == '3')
+		(*_duration_flag) = '3';
+	if((*_receivedChar) == '4')
+		(*_duration_flag) = '4';
+	
+	if((*_receivedChar) == 'w')
+		(*_stop_led) = 'w';
+	if((*_receivedChar) == 'g')
+		(*_stop_led) = 'g';
+	if((*_receivedChar) == 't')
+		(*_stop_led) = 't';
+	if((*_receivedChar) == 'y')
+		(*_stop_led) = 'y';
+	
+}
+
+
 
 int main(void) {
 
 	uint8_t receivedChar = 'X';
 	
-	UART0_Init(115200);
+	UART0_Init(19200);
 	RGBLed_Init();
 	ADC0_Init();
 	PIT_Init();
 	
 	while(1) {
-		
-	if (is_UART_DataAvailable()) {
-		receivedChar = UART_Receive();
-	}
-	if(receivedChar == 'M')
-	{
-		change_sequence = '1';
-		individual_color = 'X';
-	}
-	else
-	{
-		change_sequence = '0';
-		individual_color = 'X';
-	}
-	
-	if(receivedChar == 'N' && change_sequence == 1)
-	{
-		change_sequence = '0';
-		individual_color = 'X';
-		stop_led = 'q';
-	}
-
-	if(receivedChar == 'W')
-		individual_color = 'W';
-	if(receivedChar == 'G')
-		individual_color = 'G';
-	if(receivedChar == 'T')
-		individual_color = 'T';
-	if(receivedChar == 'Y')
-		individual_color = 'Y';
-		
-	if(receivedChar == '1')
-		duration_flag = '1';
-  if(receivedChar == '2')
-		duration_flag = '2';
-	if(receivedChar == '3')
-		duration_flag = '3';
-	if(receivedChar == '4')
-		duration_flag = '4';
-	
-	if(receivedChar == 'w')
-		stop_led = 'w';
-	if(receivedChar == 'g')
-		stop_led = 'g';
-	if(receivedChar == 't')
-		stop_led = 't';
-	if(receivedChar == 'y')
-		stop_led = 'y';
-	
+	interpret_flags(&receivedChar, &change_sequence, &individual_color, &duration_flag, &stop_led);
 	PIT_IRQHandler();
 	ADC0_IRQHandler();
 	UART0_IRQHandler();
@@ -82,12 +88,6 @@ int main(void) {
 			uint8_t parte_fractionara2 = ((uint8_t)(measured_voltage * 100)) % 10;
 			
 			UART0_Transmit('V');
-			UART0_Transmit('o');
-			UART0_Transmit('l');
-			UART0_Transmit('t');
-			UART0_Transmit('a');
-			UART0_Transmit('g');
-			UART0_Transmit('e');
 			UART0_Transmit(' ');
 			UART0_Transmit('=');
 			UART0_Transmit(' ');

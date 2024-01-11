@@ -14,6 +14,8 @@ void RGBLed_Init(void){
 	/* Activarea semnalului de ceas pentru pinii folositi in cadrul led-ului RGB */
 	SIM_SCGC5 |= SIM_SCGC5_PORTB_MASK | SIM_SCGC5_PORTD_MASK;
 	
+	/* ---- */
+	
 	PORTA->PCR[LED_PIN12] &= ~PORT_PCR_MUX_MASK;
 	PORTA->PCR[LED_PIN12] |= PORT_PCR_MUX(1);
 	
