@@ -144,13 +144,6 @@ void ADC0_IRQHandler(void) {
   uint16_t analog_input = (uint16_t) ADC0->R[0];
 	measured_voltage = (analog_input * 3.3f) / 65535;
 	
-	/*
-	float min = 3.26;
-	float mid1 = 3.28;
-	float mid2 = 3.29;
-	float max = 3.30;
-	*/
-
 	if(measured_voltage >= 0 && (double)measured_voltage < 1.1)
 	{
 		GPIOA->PSOR |= (1<<GREEN_LED_PIN); /* pornesc ledul verde */
