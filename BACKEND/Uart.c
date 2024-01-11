@@ -25,7 +25,7 @@ uint8_t UART0_Receive(void)
 void UART0_Init(uint32_t baud_rate)
 {
 	
-	uint32_t osr = 15; /* Over-Sampling Rate (numarul de esantioane luate per bit-time) */
+	uint32_t osr = 3; /* Over-Sampling Rate (numarul de esantioane luate per bit-time) */
 
 	/* Setarea sursei de ceas pentru modulul UART */
 	SIM->SOPT2 |= SIM_SOPT2_UART0SRC(01);
@@ -57,7 +57,7 @@ void UART0_Init(uint32_t baud_rate)
 	     BDH  -   0   0   0    b13 b12 b11 b10 b09
 	     BDL  -   b08 b07 b06  b05 b04 b03 b02 b01 */
 	uint16_t sbr = (uint16_t)((DEFAULT_SYSTEM_CLOCK)/(baud_rate * (osr+1)));
-	//sbr/=4;
+	sbr/=4;
 	uint8_t temp = UART0->BDH & ~(UART0_BDH_SBR(0x1F));
 	UART0->BDH = temp | UART0_BDH_SBR(((sbr & 0x1F00)>> 8));
 	UART0->BDL = (uint8_t)(sbr & UART_BDL_SBR_MASK);
