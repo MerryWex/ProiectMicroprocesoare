@@ -51,7 +51,7 @@ void PIT_IRQHandler(void) {
 	if(duration_flag == '2')
 		PIT->CHANNEL[0].LDVAL = 0x1742A62 ;
 	
-	/*2 s*/
+	/*3 s*/
 	if(duration_flag == '3')
 		PIT->CHANNEL[0].LDVAL = 0x2E854C9 ;
 	
