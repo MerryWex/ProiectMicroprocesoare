@@ -37,3 +37,6 @@ Membri:
  - Modificarea vitezei de schimbare a culorilor din secvența becului LED integrat.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pentru rularea proiectului, sunt necesare platforma Keil uVision și suport pentru Python3 (modulele PySide6, pyserial și pyqtgraph). 
+
+Link-ul către video-ul de prezentare a proiectului:
+https://www.youtube.com/watch?v=XqJlrpyVGc8
